@@ -4,6 +4,7 @@ import sys
 from yamllint import linter
 from yamllint.config import YamlLintConfig
 
+
 def main():
     yaml_path = os.environ["INPUT_PATH"]
     strict = os.environ["INPUT_STRICT"] == "true"
@@ -14,7 +15,7 @@ def main():
         problems = linter.run(f, conf, yaml_path)
 
     for problem in problems:
-        
+
         if problem.level == "warning" and strict:
             problem.level = "error"
 
